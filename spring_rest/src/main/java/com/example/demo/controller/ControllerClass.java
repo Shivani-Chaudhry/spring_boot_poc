@@ -46,7 +46,7 @@ public class ControllerClass {
 			return new ResponseEntity<String>("Medicine already exists",HttpStatus.CONFLICT);
 		}
 
-		return new ResponseEntity<String>(HttpStatus.CREATED);
+		return new ResponseEntity<String>("Medicine Inserted",HttpStatus.CREATED);
 	}
 
 	@PutMapping("update")
@@ -54,10 +54,10 @@ public class ControllerClass {
 		medservice.updateMedicine(medicine);
 		return new ResponseEntity<BeanClass>(medicine, HttpStatus.OK);
 	}
-	@DeleteMapping("medicine/{id}")
-	public ResponseEntity<Void> deleteMedicine(@PathVariable("id") Integer id) {
+		@DeleteMapping("medicine/{id}")
+	public ResponseEntity<String> deleteMedicine(@PathVariable("id") Integer id) {
 		medservice.deleteMedicine(id);
-		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<String>("Medicine Deleted",HttpStatus.CREATED);
 	}	
 }  
 
